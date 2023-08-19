@@ -1,7 +1,8 @@
 ### Copyright (C) 2020 Roy Or-El. All rights reserved.
 ### Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
 import os
-import scipy # this is to prevent a potential error caused by importing torch before scipy (happens due to a bad combination of torch & scipy versions)
+import \
+    scipy  # this is to prevent a potential error caused by importing torch before scipy (happens due to a bad combination of torch & scipy versions)
 from collections import OrderedDict
 from options.test_options import TestOptions
 from data.data_loader import CreateDataLoader
@@ -14,7 +15,7 @@ from pdb import set_trace as st
 
 
 def test(opt):
-    opt.nThreads = 1   # test code only supports nThreads = 1
+    opt.nThreads = 1  # test code only supports nThreads = 1
     opt.batchSize = 1  # test code only supports batchSize = 1
     opt.serial_batches = True  # no shuffle
     opt.no_flip = True  # no flip
@@ -39,7 +40,7 @@ def test(opt):
             out_dirname = 'traversal'
         else:
             out_dirname = 'deploy'
-        output_dir = os.path.join(web_dir,out_dirname)
+        output_dir = os.path.join(web_dir, out_dirname)
         if not os.path.isdir(output_dir):
             os.makedirs(output_dir)
 
@@ -52,7 +53,8 @@ def test(opt):
                 visualizer.make_video(visuals, out_path)
             elif opt.traverse or (opt.deploy and opt.full_progression):
                 if opt.traverse and opt.compare_to_trained_outputs:
-                    out_path = os.path.join(output_dir, os.path.splitext(os.path.basename(image_path))[0] + '_compare_to_{}_jump_{}.png'.format(opt.compare_to_trained_class, opt.trained_class_jump))
+                    out_path = os.path.join(output_dir, os.path.splitext(os.path.basename(image_path))[
+                        0] + '_compare_to_{}_jump_{}.png'.format(opt.compare_to_trained_class, opt.trained_class_jump))
                 else:
                     out_path = os.path.join(output_dir, os.path.splitext(os.path.basename(image_path))[0] + '.png')
                 visualizer.save_row_image(visuals, out_path, traverse=opt.traverse)
