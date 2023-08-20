@@ -1,2 +1,2 @@
-datasets/male/test_3/Img_1.png
-datasets/male/test_3/Img_2.png
+datasets/male/test_11/Img_0.png
+datasets/male/test_11/Img_1.png
